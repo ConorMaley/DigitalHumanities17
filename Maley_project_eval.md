@@ -11,3 +11,4 @@ This piece is a review of the Voyages: The Trans-Atlantic Slave Trade Database D
 
 ###Collaboration & Documentation
 
+###Conclusion
