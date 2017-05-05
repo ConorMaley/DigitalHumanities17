@@ -1,0 +1,111 @@
+Sender,Recipient,Method of Delivery,Message,Nature of Exchange,Page Number,Sender Last Row,Recipiant Last Row,Sender Last Page,Recipiant Last Page,Sender num pgs since last interaction,Recipiant num pgs since last interaction
+Selden,Lily Bart,in person,invitation,social,6,0,0,0,0,-1,-1
+Lily Bart,Selden,in person,invitation,social,7,2,2,6,6,1,1
+Simon Rosedale,Lily Bart,in person,invitation,social,16,0,3,0,7,-1,9
+Lily Bart,Percy Gryce,in person,information,social,19,4,0,16,0,3,-1
+Lily Bart,Percy Gryce,in person,invitation,social,20,5,5,19,19,1,1
+Lily Bart,unnamed vendors,in person,purchase,social,28,6,0,20,0,8,-1
+Mr. Bart,unnamed vendors,telephone,purchase,social,31,0,7,0,28,-1,3
+unnamed vendors,Lily Bart,postal service,bill,financial,32,8,7,31,28,1,4
+Mr. Bart,Mrs. Bart,in person,information,financial,33,8,0,31,0,2,-1
+Mrs. Bart,Lily Bart,in person,instructions,social,34,10,9,33,32,1,2
+unnamed vendors,Lily Bart,postal service,bill,financial,40,9,11,32,34,8,6
+Judy Trenor,,in person,gossip,social,46,0,0,0,0,-1,-1
+Judy Trenor,Lily Bart,in person,information,social,54,13,12,46,40,8,14
+George Dorset,Lily Bart,in person,gossip,social,56,0,14,0,54,-1,2
+Lily Bart,Bertha Dorset,in person,information,social,60,15,0,56,0,4,-1
+Selden,Lily Bart,in person,information,social,62,3,16,7,60,55,2
+Selden,Lily Bart,in person,invitation,social,64,17,17,62,62,2,2
+Selden,Lily Bart,in person,information,romantic,66,18,18,64,64,2,2
+Lily Bart,Selden,in person,proposal,romantic,73,19,19,66,66,7,7
+Judy Trenor,Lily Bart,in person,advice,romantic,75,14,20,54,73,21,2
+Judy Trenor,Lily Bart,in person,gossip,financial,76,21,21,75,75,1,1
+Judy Trenor,Lily Bart,in person,instructions,logistical,77,22,22,76,76,1,1
+Judy Trenor,Lily Bart,in person,gossip,financial,78,23,23,77,77,1,1
+Gus Trenor,Lily Bart,in person,information,financial,81,0,24,0,78,-1,3
+Lily Bart,Gus Trenor,in person,information,financial,83,25,25,81,81,2,2
+Lily Bart,Gus Trenor,in person,proposition,financial,84,26,26,83,83,1,1
+Gus Trenor,Lily Bart,postal service,money,financial,85,27,27,84,84,1,1
+Gerty Farish,Lily Bart,in person,information,social,89,0,28,0,85,-1,4
+Gus Trenor,Lily Bart,in person,threat,predatory,92,28,29,85,89,7,3
+Mrs. Van Osburgh,Lily Bart,in person,gossip,social,97,0,30,0,92,-1,5
+Mrs. Peniston,unnamed friends,in person,information,social,99,0,0,0,0,-1,-1
+Mrs. Haffen,Lily Bart,in person,proposition,social,101,0,31,0,97,-1,4
+Lily Bart,Mrs. Haffen,in person,purchase,social,102,33,33,101,101,1,1
+Bertha Dorset,Selden,postal service,love note,romantic,104,16,20,60,73,44,31
+Mrs. Peniston,Lily Bart,in person,gossip,social,108,32,34,99,102,9,6
+Judy Trenor,Lily Bart,postal service,invitation,social,109,24,36,78,108,31,1
+Lily Bart,Gerty Farish,in person,money,charitable,110,37,29,109,89,1,21
+Carry Fisher,Lily Bart,postal service,invitation,social,111,0,38,0,110,-1,1
+Simon Rosedale,Lily Bart,in person,invitation,romantic,112,4,39,16,111,96,1
+Gus Trenor,Lily Bart,in person,threat,predatory,115,30,40,92,112,23,3
+Gus Trenor,Lily Bart,in person,invitation,predatory,116,41,41,115,115,1,1
+Grace Stepney,Mrs. Peniston,in person,gossip,social,122,0,36,0,108,-1,14
+Grace Stepney,Mrs. Peniston,in person,gossip,financial,124,43,43,122,122,2,2
+Lily Bart,Gerty Farish,postal service,invitation,social,130,42,38,116,110,14,20
+Gerty Farish,Selden,in person,information,social,130,45,35,130,104,0,26
+Lily Bart,Gerty Farish,in person,money,charitable,131,45,46,130,130,1,1
+Mrs. Wellington Bry,Gerty Farish,in person,money,charitable,132,0,47,0,131,-1,1
+Simon Rosedale,Gerty Farish,in person,money,charitable,133,40,48,112,132,21,1
+Selden,Lily Bart,in person,proposal,romantic,135,46,47,130,131,5,4
+Judy Trenor,Lily Bart,postal service,invitation,social,136,37,50,109,135,27,1
+Selden,Lily Bart,postal service,proposal,social,137,50,51,135,136,2,1
+Lily Bart,Selden,postal service,information,social,138,52,52,137,137,1,1
+Gus Trenor,Lily Bart,in person,proposition,romantic,139,42,53,116,138,23,1
+Judy Trenor,Gus Trenor,telephone,information,social,141,55,56,141,144,0,-3
+Gus Trenor,Lily Bart,in person,threat,predatory,144,54,54,139,139,5,5
+Gus Trenor,Selden,in person,invitation,social,151,56,53,144,138,7,13
+Selden,Gerty Farish,in person,instructions,social,154,57,49,151,133,3,21
+Mr. Van Alstyne,Selden,in person,instructions,social,158,0,58,0,154,-1,4
+Selden,Gerty Farish,in person,affection,social,159,59,58,158,154,1,5
+Gerty Farish,Lily Bart,in person,affection,social,164,60,56,159,144,5,20
+Gerty Farish,Mrs. Peniston,telephone,information,logistical,165,61,44,164,124,1,41
+Lily Bart,Mrs. Peniston,in person,instructions,financial,167,61,62,164,165,3,2
+Mrs. Peniston,Lily Bart,in person,instructions,logistical,169,63,63,167,167,2,2
+Simon Rosedale,Lily Bart,in person,proposal,logistical,172,49,64,133,169,39,3
+Bertha Dorset,Lily Bart,telegraph,invitation,social,177,35,65,104,172,73,5
+Carry Fisher,Selden,in person,gossip,social,184,39,60,111,159,73,25
+Selden,unnamed vendors,postal service,instructions,financial,186,67,12,184,40,2,146
+Ned Silverton,Selden,in person,gossip,social,188,0,68,0,186,-1,2
+Lord Hubert,Selden,in person,gossip,social,190,0,69,0,188,-1,2
+Lily Bart,Bertha Dorset,via servant,invitation,social,192,66,66,177,177,15,15
+Carry Fisher,Lily Bart,in person,gossip,social,195,67,71,184,192,11,3
+George Dorset,Lily Bart,in person,gossip,social,197,15,72,56,195,141,2
+Lily Bart,George Dorset,in person,advice,logistical,199,73,73,197,197,2,2
+Bertha Dorset,Lily Bart,in person,information,social,202,71,74,192,199,10,3
+Bertha Dorset,Lily Bart,in person,threat,predatory,203,75,75,202,202,1,1
+Lily Bart,Selden,telegraph,information,logistical,203,76,70,203,190,0,13
+Selden,Lily Bart,telegraph,instructions,logistical,204,77,77,203,203,1,1
+Selden,Lily Bart,in person,advice,social,209,78,78,204,204,5,5
+Bertha Dorset,Lily Bart,in person,instructions,social,212,76,79,203,209,9,3
+Selden,Lily Bart,in person,instructions,logistical,215,79,80,209,212,6,3
+unnamed vendors,Lily Bart,in person,money,financial,217,68,81,186,215,31,2
+unnamed vendors,Grace Stepney,in person,information,financial,217,82,44,217,124,0,93
+Judy Trenor,Lily Bart,in person,information,social,223,55,82,141,217,82,6
+Grace Stepney,Lily Bart,in person,information,financial,225,83,84,217,223,8,2
+Carry Fisher,Lily Bart,in person,invitation,social,226,72,85,195,225,31,1
+Carry Fisher,Lily Bart,in person,invitation,social,229,86,86,226,226,3,3
+Carry Fisher,Lily Bart,in person,instructions,financial,232,87,87,229,229,3,3
+George Dorset,Lily Bart,in person,information,social,239,74,88,199,232,40,7
+Bertha Dorset,Mattie Gormer,in person,gossip,social,240,80,0,212,0,28,-1
+George Dorset,Lily Bart,in person,proposal,social,242,89,89,239,239,3,3
+Carry Fisher,Lily Bart,in person,advice,social,246,88,91,232,242,14,4
+Lily Bart,Simon Rosedale,in person,proposition,social,248,92,65,246,172,2,76
+Simon Rosedale,Lily Bart,in person,advice,logistical,253,93,93,248,248,5,5
+unnamed friends,Lily Bart,postal service,invitation,social,254,32,94,99,253,155,1
+Carry Fisher,Lily Bart,postal service,instructions,logistical,261,92,95,246,254,15,7
+unnamed vendors,Selden,in person,information,logistical,265,83,81,217,215,48,50
+Lily Bart,Selden,in person,information,social,272,96,97,261,265,11,7
+Selden,Lily Bart,in person,advice,social,272,98,98,272,272,0,0
+Mr. Stancy,Lily Bart,in person,proposition,social,275,0,99,0,272,-1,3
+Gerty Farish,Lily Bart,in person,advice,logistical,275,62,100,165,275,110,0
+unnamed vendors,Lily Bart,in person,instructions,logistical,280,97,101,265,275,15,5
+Simon Rosedale,Lily Bart,in person,money,financial,284,94,102,253,280,31,4
+Simon Rosedale,Lily Bart,in person,proposition,financial,291,103,103,284,284,7,7
+Simon Rosedale,Lily Bart,in person,proposal,social,292,104,104,291,291,1,1
+Lily Bart,Selden,in person,affection,romantic,299,105,99,292,272,7,27
+Netty Struther,Lily Bart,in person,invitation,social,305,0,106,0,299,-1,6
+Mrs. Peniston,Lily Bart,postal service,money,financial,309,64,107,169,305,140,4
+Lily Bart,Gus Trenor,postal service,money,financial,312,108,57,309,151,3,161
+Gerty Farish,Selden,in person,information,logistical,316,101,106,275,299,41,17
+Selden,Lily Bart,in person,affection,romantic,320,110,109,316,312,4,8

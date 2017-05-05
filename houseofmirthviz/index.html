@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html>
+
+<meta charset="utf-8">
+<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+<style>
+
+body { font: 12px Arial;}
+
+path { 
+	stroke: steelblue;
+	stroke-width: 2;
+	fill: none;
+}
+
+.axis path,
+.axis line {
+	fill: none;
+	stroke: grey;
+	stroke-width: 1;
+	shape-rendering: crispEdges;
+}
+
+</style>
+
+<head>
+	<title>House of Mirth Character Relevance</title>
+</head>
+<body>
+
+<h1>Character Relevance Scores</h1>
+
+<h4>Visualizing the House of Mirth's Character Interactions</h4>
+
+<p>Visualizing the House of Mirth's <i>characters' relevance</i> based on their interactions. Character relevance is simply a formula that goes through each page of the book and checks if there were any interactions between characters. If there is an interaction, the characters interacting with each other increase their Character relevance score by 10. If a character does not interact with any other character on any given page, they lose .25 of their Character relevance score with a minimum of 0. Character Relevance isn't necessarily a scale of how important a character is to the story, but it is more geared to use as a distant reading tool. Maybe a character is introduced and fades away but then returns to the action towards the end of the story. Or maybe two characters have similar slope paths throughout the story.</p>
+
+<p>The real purpose of this project was for me to <i>flex</i> my javascript muscles that are extremely weak and in some areas, nonexistant. But I think that with some future work this idea of a Character Relevance score can be a powerful distant reading tool. Below, we have the Character relevance scores of each of the characters from the House of Mirth. </p>
+<center>
+<script>
+//poorly, elementary level js code
+//i cringe at the amount of copy paste done here
+//there is for sure a better way to do this
+var	margin = {top: 30, right: 90, bottom: 30, left: 50},
+	width = 900 - margin.left - margin.right,
+	height = 600 - margin.top - margin.bottom;
+
+var parseDate = d3.time.format("%j").parse;
+
+var x = d3.time.scale().range([0, width]);
+var	y = d3.scale.linear().range([height, 0]);
+
+var	xAxis = d3.svg.axis().scale(x)
+	.orient("bottom").ticks(5);
+
+var	yAxis = d3.svg.axis().scale(y)
+	.orient("left").ticks(5);
+
+var	valueline = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.LilyBart); });
+	
+var	valueline2 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.Selden); });
+
+var	valueline3 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.SimonRosedale); });
+	
+var	valueline4 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.MrBart); });
+
+var	valueline5 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.unnamedvendors); });
+	
+var	valueline6 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.MrsBart); });
+
+var	valueline7 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.JudyTrenor); });
+	
+var	valueline8 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.GeorgeDorset); });
+
+var	valueline9 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.GusTrenor); });
+	
+var	valueline10 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.GertyFarish); });
+
+var	valueline11 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.MrsVanOsburgh); });
+	
+var	valueline12 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.MrsPeniston); });
+
+var	valueline13 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.MrsHaffen); });
+	
+var	valueline14 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.BerthaDorset); });
+
+var	valueline15 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.CarryFisher); });
+	
+var	valueline16 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.GraceStepney); });
+
+var	valueline17 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.MrsWellingtonBry); });
+	
+var	valueline18 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.MrVanAlstyne); });
+
+var	valueline19 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.NedSilverton); });
+	
+var	valueline20 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.LordHubert); });
+
+var	valueline21 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.unnamedfriends); });
+	
+var	valueline22 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.MrStancy); });
+
+var	valueline23 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.NettyStruther); });
+	
+var	valueline24 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.MattieGormer); });
+
+  
+var	svg = d3.select("body")
+	.append("svg")
+		.attr("width", width + margin.left + margin.right)
+		.attr("height", height + margin.top + margin.bottom)
+	.append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+// Get the data
+d3.csv("mirthCharacterRelevance1.csv", function(error, data) {
+	data.forEach(function(d) {
+		d.page = +d.page;
+		d.Selden = +d.Selden;
+		d.LilyBart = +d.LilyBart;
+		d.SimonRosedale = +d.SimonRosedale;
+		d.MrBart = +d.MrBart;
+		d.unnamedvendors = +d.unnamedvendors;
+		d.MrsBart = +d.MrsBart;
+		d.JudyTrenor = +d.JudyTrenor;
+		d.GeorgeDorset = +d.GeorgeDorset;
+		d.GusTrenor = +d.GusTrenor;
+		d.GertyFarish = +d.GertyFarish;
+		d.MrsVanOsburgh = +d.MrsVanOsburgh;
+		d.MrsPeniston = +d.MrsPeniston;
+		d.MrsHaffen = +d.MrsHaffen;
+		d.BerthaDorset = +d.BerthaDorset;
+		d.CarryFisher = +d.CarryFisher;
+		d.GraceStepney = +d.GraceStepney;
+		d.MrsWellingtonBry = +d.MrsWellingtonBry;
+		d.MrVanAlstyne = +d.MrVanAlstyne;
+		d.NedSilverton = +d.NedSilverton;
+		d.LordHubert = +d.LordHubert;
+		d.unnamedfriends = +d.unnamedfriends;
+		d.MrStancy = +d.MrStancy;
+		d.NettyStruther = +d.NettyStruther;
+		d.MattieGormer = +d.MattieGormer;
+
+	});
+
+	console.log(data.slice(0, 39));
+
+	// Scale the range of the data
+	x.domain(d3.extent(data, function(d) { return d.page; }));
+	y.domain([0, d3.max(data, function(d) { return Math.max(d.Selden, d.LilyBart); })]);
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	svg.append("path")		// Add the valueline path.
+		.attr("class", "line")
+		.style("stroke", "rgb(0, 0, 255)")
+		.attr("d", valueline(data));
+
+	svg.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].LilyBart) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(0, 0, 255)")
+		.text("Lily Bart");
+
+	svg.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(0, 255, 0)")
+		.attr("d", valueline2(data));
+
+	svg.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].Selden) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(0, 255, 0)")
+		.text("Selden");
+
+	svg.append("path")		// Add the valueline path.
+		.attr("class", "line")
+		.style("stroke", "rgb(255, 0, 0)")
+		.attr("d", valueline3(data));
+
+	svg.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].SimonRosedale) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(255, 0, 0)")
+		.text("Simon Rosedale");
+
+	svg.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(255, 0, 255)")
+		.attr("d", valueline4(data));
+
+	svg.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].MrBart) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(255, 0, 255)")
+		.text("Mr. Bart");
+
+	svg.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(0, 255, 255)")
+		.attr("d", valueline5(data));
+
+	svg.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].unnamedvendors) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(0, 255, 255)")
+		.text("unnamed vendors");
+
+	svg.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(255, 255, 0)")
+		.attr("d", valueline6(data));
+
+	svg.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].MrsBart) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(255, 255, 0)")
+		.text("Mrs. Bart");
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	svg.append("path")		// Add the valueline path.
+		.attr("class", "line")
+		.style("stroke", "rgb(0, 0, 0)")
+		.attr("d", valueline7(data));
+
+	svg.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].JudyTrenor) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(0, 0, 0)")
+		.text("Judy Trenor");
+
+	svg.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(130, 0, 0)")
+		.attr("d", valueline8(data));
+
+	svg.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].GeorgeDorset) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(130, 0, 0)")
+		.text("George Dorset");
+
+	svg.append("path")		// Add the valueline path.
+		.attr("class", "line")
+		.style("stroke", "rgb(0, 130, 0)")
+		.attr("d", valueline9(data));
+
+	svg.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].GusTrenor) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(0, 130, 0)")
+		.text("Gus Trenor");
+
+	svg.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(0, 0, 130)")
+		.attr("d", valueline10(data));
+
+	svg.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].GertyFarish) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(0, 0, 130)")
+		.text("Gerty Farish");
+
+	svg.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(130, 130, 0)")
+		.attr("d", valueline11(data));
+
+	svg.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].MrsVanOsburgh) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(130, 130, 0)")
+		.text("Mrs. Van Osburgh");
+
+	svg.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(130, 0, 130)")
+		.attr("d", valueline12(data));
+
+	svg.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].MrsPeniston) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(130, 0, 130)")
+		.text("Mrs. Peniston");
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	svg.append("path")		// Add the valueline path.
+		.attr("class", "line")
+		.style("stroke", "rgb(0, 130, 130)")
+		.attr("d", valueline13(data));
+
+	svg.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].MrsHaffen) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(0, 130, 130)")
+		.text("Mrs. Haffen");
+
+	svg.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(130, 130, 130)")
+		.attr("d", valueline14(data));
+
+	svg.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].BerthaDorset) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(130, 130, 130)")
+		.text("Bertha Dorset");
+
+	svg.append("path")		// Add the valueline path.
+		.attr("class", "line")
+		.style("stroke", "rgb(255, 130, 130)")
+		.attr("d", valueline15(data));
+
+	svg.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].CarryFisher) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(255, 130, 130)")
+		.text("Carry Fisher");
+
+	svg.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(130, 130, 255)")
+		.attr("d", valueline16(data));
+
+	svg.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].GraceStepney) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(130, 130, 255)")
+		.text("Grace Stepney");
+
+	svg.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(130, 255, 130)")
+		.attr("d", valueline17(data));
+
+	svg.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].MrsWellingtonBry) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(130, 255, 130)")
+		.text("Mrs. Wellington Bry");
+
+	svg.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(255, 130, 255)")
+		.attr("d", valueline18(data));
+
+	svg.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].MrVanAlstyne) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(255, 130, 255)")
+		.text("Mr. Van Alstyne");
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	svg.append("path")		// Add the valueline path.
+		.attr("class", "line")
+		.style("stroke", "rgb(130, 255, 255)")
+		.attr("d", valueline19(data));
+
+	svg.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].NedSilverton) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(130, 255, 255)")
+		.text("Ned Silverton");
+
+	svg.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(255, 255, 130)")
+		.attr("d", valueline20(data));
+
+	svg.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].LordHubert) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(255, 255, 130)")
+		.text("LordHubert");
+
+	svg.append("path")		// Add the valueline path.
+		.attr("class", "line")
+		.style("stroke", "rgb(50, 255, 50)")
+		.attr("d", valueline21(data));
+
+	svg.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].unnamedfriends) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(50, 255, 50)")
+		.text("unnamed friends");
+
+	svg.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(50, 50, 255)")
+		.attr("d", valueline22(data));
+
+	svg.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].MrStancy) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(50, 50, 255)")
+		.text("Mr. Stancy");
+
+	svg.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(255, 50, 50)")
+		.attr("d", valueline23(data));
+
+	svg.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].NettyStruther) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(255, 50, 50)")
+		.text("NettyStruther");
+
+	svg.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(50, 50, 50)")
+		.attr("d", valueline24(data));
+
+	svg.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].MattieGormer) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(50, 50, 50)")
+		.text("Mattie Gormer");
+
+	svg.append("g")			// Add the X Axis
+		.attr("class", "x axis")
+		.attr("transform", "translate(0," + height + ")")
+		.call(xAxis);
+
+	svg.append("g")			// Add the Y Axis
+		.attr("class", "y axis")
+		.call(yAxis);
+
+});
+</script>
+</center>
+<p>It's pretty obvious that Lily Bart and Selden are the most <i>active</i> characters in the story, let's take a look at what the scores look like when we remove those two characters. </p>
+
+<center>
+<script>
+
+var	margin = {top: 30, right: 90, bottom: 30, left: 50},
+	width = 900 - margin.left - margin.right,
+	height = 600 - margin.top - margin.bottom;
+
+var parseDate = d3.time.format("%j").parse;
+
+var x = d3.time.scale().range([0, width]);
+var	y = d3.scale.linear().range([height, 0]);
+
+var	xAxis = d3.svg.axis().scale(x)
+	.orient("bottom").ticks(5);
+
+var	yAxis = d3.svg.axis().scale(y)
+	.orient("left").ticks(5);
+
+var	valueline = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.LilyBart); });
+	
+var	valueline2 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.Selden); });
+
+var	valueline3 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.SimonRosedale); });
+	
+var	valueline4 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.MrBart); });
+
+var	valueline5 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.unnamedvendors); });
+	
+var	valueline6 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.MrsBart); });
+
+var	valueline7 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.JudyTrenor); });
+	
+var	valueline8 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.GeorgeDorset); });
+
+var	valueline9 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.GusTrenor); });
+	
+var	valueline10 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.GertyFarish); });
+
+var	valueline11 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.MrsVanOsburgh); });
+	
+var	valueline12 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.MrsPeniston); });
+
+var	valueline13 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.MrsHaffen); });
+	
+var	valueline14 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.BerthaDorset); });
+
+var	valueline15 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.CarryFisher); });
+	
+var	valueline16 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.GraceStepney); });
+
+var	valueline17 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.MrsWellingtonBry); });
+	
+var	valueline18 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.MrVanAlstyne); });
+
+var	valueline19 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.NedSilverton); });
+	
+var	valueline20 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.LordHubert); });
+
+var	valueline21 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.unnamedfriends); });
+	
+var	valueline22 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.MrStancy); });
+
+var	valueline23 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.NettyStruther); });
+	
+var	valueline24 = d3.svg.line()
+	.x(function(d) { return x(d.page); })
+	.y(function(d) { return y(d.MattieGormer); });
+
+  
+var	svg1 = d3.select("body")
+	.append("svg")
+		.attr("width", width + margin.left + margin.right)
+		.attr("height", height + margin.top + margin.bottom)
+	.append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+// Get the data
+d3.csv("mirthCharacterRelevance1.csv", function(error, data) {
+	data.forEach(function(d) {
+		d.page = +d.page;
+		d.Selden = +d.Selden;
+		d.LilyBart = +d.LilyBart;
+		d.SimonRosedale = +d.SimonRosedale;
+		d.MrBart = +d.MrBart;
+		d.unnamedvendors = +d.unnamedvendors;
+		d.MrsBart = +d.MrsBart;
+		d.JudyTrenor = +d.JudyTrenor;
+		d.GeorgeDorset = +d.GeorgeDorset;
+		d.GusTrenor = +d.GusTrenor;
+		d.GertyFarish = +d.GertyFarish;
+		d.MrsVanOsburgh = +d.MrsVanOsburgh;
+		d.MrsPeniston = +d.MrsPeniston;
+		d.MrsHaffen = +d.MrsHaffen;
+		d.BerthaDorset = +d.BerthaDorset;
+		d.CarryFisher = +d.CarryFisher;
+		d.GraceStepney = +d.GraceStepney;
+		d.MrsWellingtonBry = +d.MrsWellingtonBry;
+		d.MrVanAlstyne = +d.MrVanAlstyne;
+		d.NedSilverton = +d.NedSilverton;
+		d.LordHubert = +d.LordHubert;
+		d.unnamedfriends = +d.unnamedfriends;
+		d.MrStancy = +d.MrStancy;
+		d.NettyStruther = +d.NettyStruther;
+		d.MattieGormer = +d.MattieGormer;
+
+	});
+
+	console.log(data.slice(0, 39));
+
+	// Scale the range of the data
+	x.domain(d3.extent(data, function(d) { return d.page; }));
+	y.domain([0, d3.max(data, function(d) { return Math.max(d.SimonRosedale, d.MrBart, d.unnamedvendors,d.MrsBart,d.JudyTrenor,d.GeorgeDorset
+		,d.GusTrenor
+		,d.GertyFarish
+		,d.MrsVanOsburgh
+		,d.MrsPeniston
+		,d.MrsHaffen
+		,d.BerthaDorset
+		,d.CarryFisher
+		,d.GraceStepney
+		,d.MrsWellingtonBry
+		,d.MrVanAlstyne
+		,d.NedSilverton
+		,d.LordHubert
+		,d.unnamedfriends
+		,d.MrStancy
+		,d.NettyStruther
+		,d.MattieGormer); })]);
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	svg1.append("path")		// Add the valueline path.
+		.attr("class", "line")
+		.style("stroke", "rgb(255, 0, 0)")
+		.attr("d", valueline3(data));
+
+	svg1.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].SimonRosedale) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(255, 0, 0)")
+		.text("Simon Rosedale");
+
+	svg1.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(255, 0, 255)")
+		.attr("d", valueline4(data));
+
+	svg1.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].MrBart) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(255, 0, 255)")
+		.text("Mr. Bart");
+
+	svg1.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(0, 255, 255)")
+		.attr("d", valueline5(data));
+
+	svg1.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].unnamedvendors) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(0, 255, 255)")
+		.text("unnamed vendors");
+
+	svg1.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(255, 255, 0)")
+		.attr("d", valueline6(data));
+
+	svg1.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].MrsBart) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(255, 255, 0)")
+		.text("Mrs. Bart");
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	svg1.append("path")		// Add the valueline path.
+		.attr("class", "line")
+		.style("stroke", "rgb(0, 0, 0)")
+		.attr("d", valueline7(data));
+
+	svg1.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].JudyTrenor) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(0, 0, 0)")
+		.text("Judy Trenor");
+
+	svg1.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(130, 0, 0)")
+		.attr("d", valueline8(data));
+
+	svg1.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].GeorgeDorset) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(130, 0, 0)")
+		.text("George Dorset");
+
+	svg1.append("path")		// Add the valueline path.
+		.attr("class", "line")
+		.style("stroke", "rgb(0, 130, 0)")
+		.attr("d", valueline9(data));
+
+	svg1.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].GusTrenor) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(0, 130, 0)")
+		.text("Gus Trenor");
+
+	svg1.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(0, 0, 130)")
+		.attr("d", valueline10(data));
+
+	svg1.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].GertyFarish) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(0, 0, 130)")
+		.text("Gerty Farish");
+
+	svg1.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(130, 130, 0)")
+		.attr("d", valueline11(data));
+
+	svg1.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].MrsVanOsburgh) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(130, 130, 0)")
+		.text("Mrs. Van Osburgh");
+
+	svg1.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(130, 0, 130)")
+		.attr("d", valueline12(data));
+
+	svg1.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].MrsPeniston) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(130, 0, 130)")
+		.text("Mrs. Peniston");
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	svg1.append("path")		// Add the valueline path.
+		.attr("class", "line")
+		.style("stroke", "rgb(0, 130, 130)")
+		.attr("d", valueline13(data));
+
+	svg1.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].MrsHaffen) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(0, 130, 130)")
+		.text("Mrs. Haffen");
+
+	svg1.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(130, 130, 130)")
+		.attr("d", valueline14(data));
+
+	svg1.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].BerthaDorset) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(130, 130, 130)")
+		.text("Bertha Dorset");
+
+	svg1.append("path")		// Add the valueline path.
+		.attr("class", "line")
+		.style("stroke", "rgb(255, 130, 130)")
+		.attr("d", valueline15(data));
+
+	svg1.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].CarryFisher) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(255, 130, 130)")
+		.text("Carry Fisher");
+
+	svg1.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(130, 130, 255)")
+		.attr("d", valueline16(data));
+
+	svg1.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].GraceStepney) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(130, 130, 255)")
+		.text("Grace Stepney");
+
+	svg1.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(130, 255, 130)")
+		.attr("d", valueline17(data));
+
+	svg1.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].MrsWellingtonBry) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(130, 255, 130)")
+		.text("Mrs. Wellington Bry");
+
+	svg1.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(255, 130, 255)")
+		.attr("d", valueline18(data));
+
+	svg1.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].MrVanAlstyne) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(255, 130, 255)")
+		.text("Mr. Van Alstyne");
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	svg1.append("path")		// Add the valueline path.
+		.attr("class", "line")
+		.style("stroke", "rgb(130, 255, 255)")
+		.attr("d", valueline19(data));
+
+	svg1.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].NedSilverton) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(130, 255, 255)")
+		.text("Ned Silverton");
+
+	svg1.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(255, 255, 130)")
+		.attr("d", valueline20(data));
+
+	svg1.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].LordHubert) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(255, 255, 130)")
+		.text("LordHubert");
+
+	svg1.append("path")		// Add the valueline path.
+		.attr("class", "line")
+		.style("stroke", "rgb(50, 255, 50)")
+		.attr("d", valueline21(data));
+
+	svg1.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].unnamedfriends) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(50, 255, 50)")
+		.text("unnamed friends");
+
+	svg1.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(50, 50, 255)")
+		.attr("d", valueline22(data));
+
+	svg1.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].MrStancy) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(50, 50, 255)")
+		.text("Mr. Stancy");
+
+	svg1.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(255, 50, 50)")
+		.attr("d", valueline23(data));
+
+	svg1.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].NettyStruther) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(255, 50, 50)")
+		.text("NettyStruther");
+
+	svg1.append("path")		// Add the valueline2 path.
+		.attr("class", "line")
+		.style("stroke", "rgb(50, 50, 50)")
+		.attr("d", valueline24(data));
+
+	svg1.append("text")
+		.attr("transform", "translate(" + (width+3) + "," + y(data[data.length-1].MattieGormer) + ")")
+		.attr("dy", ".35em")
+		.attr("text-anchor", "start")
+		.style("fill", "rgb(50, 50, 50)")
+		.text("Mattie Gormer");
+
+	svg1.append("g")			// Add the X Axis
+		.attr("class", "x axis")
+		.attr("transform", "translate(0," + height + ")")
+		.call(xAxis);
+
+	svg1.append("g")			// Add the Y Axis
+		.attr("class", "y axis")
+		.call(yAxis);
+
+});
+</script>
+</center>
+
+<p>Here, once again, the x-axis represents the page number in the story and the y-axis represents each characters' CR score. We see that many characters make only minor appearences, giving us little triangles creating the clump of letters towards the bottom right of the graph. Some characters, such as Gerty Farish, Carry Fisher, and Judy Trenor seem to have major roles for only a section of the story, then they seem to fade away as the story progresses.</p>
+
+<h4> Concluding Remarks </h4>
+
+<p>My hope is that this project can be used as a pathway for future scholars. We can do the same sort of thing, but with different stories, books, and plays. We can even adjust the CR scoring system, perhaps provide characters with less of a reward if they appear multiple times in a short number of pages. With more data and Javascript exposure, this project could turn out to be very useful in providing distant readings. </p>
+
+</body>
+</html>
